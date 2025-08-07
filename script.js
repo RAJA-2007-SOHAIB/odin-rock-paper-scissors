@@ -13,33 +13,67 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-function showChoices(humanChoice, computerChoice) {
-    return `You chose: ${humanChoice.toLowerCase()}\nComputer chose: ${computerChoice}\n`;
+function showChoices(yourChoice, computerChoice) {
+    return `You chose: ${yourChoice.toLowerCase()}\nComputer chose: ${computerChoice}`;
 }
 
 
-function playGround(human, computer) {
-    human = human.toLowerCase();
+function playRound(yourChoice, computerChoice) {
     let result;
-    if (human === computer) {
-        result = showChoices(human, computer) + "It's a Tie!";
-        return result;
-    } else if (human !== computer) {
-        result = (human === "rock" && computer === "scissors") ? showChoices(human, computer) + "You won!":
-    (human === "rock" && computer === "paper") ? showChoices(human, computer) + "You lost!":
-    (human === "paper" && computer === "rock") ? showChoices(human, computer) + "You won!":
-    (human === "paper" && computer === "scissors") ? showChoices(human, computer) + "You lost":
-    (human === "scissors" && computer === "paper") ? showChoices(human, computer) + "You won!":
-    (human === "scissors" && computer === "rock") ? showChoices(human, computer) + "You lost!":
-    showChoices(human, computer) + "Are You Dumb!!!";
+    yourChoice = yourChoice.toLowerCase();
+
+    if (yourChoice === computerChoice) {
+        result = "It's a tie!";
+        
+    } else if (yourChoice !== computerChoice) {
+        if ( (yourChoice === "rock" && computerChoice === "scissors") 
+        || (yourChoice === "paper" && computerChoice === "rock")
+        || (yourChoice === "scissors" && computerChoice === "paper")) {
+            result = "You won!";
+            humanScore += 1;
+        } else if ((yourChoice === "rock" && computerChoice === "paper")
+        || (yourChoice === "paper" && computerChoice === "scissors")
+        || (yourChoice === "scissors" && computerChoice === "rock")) {
+            result = "You lost!";
+            computerScore += 1;
+        }else {
+            result = `Are you FR!!! Select "ONLY" from the given options!`
+        }
     }
-    return result;
+
+    return showChoices(yourChoice, computerChoice) + "\n" + result + "\n" + humanScore + "\t" + computerScore;
+
 }
-
-
 
 function playGame() {
-    console.log(playGround(getHumanChoice(), getComputerChoice()));
+    let nextRound = prompt("press any key to start round 1");
+    console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+    nextRound = prompt("press any key to start round 2");
+    console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+    nextRound = prompt("press any key to start round 3");
+    console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+    nextRound = prompt("press any key to start round 4");
+    console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+    nextRound = prompt("press any key to start round 5");
+    console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+    if (humanScore > computerScore) {
+        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
+        console.log(`Congrats! You have won the game.`);
+    } else if(humanScore < computerScore) {
+        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
+        console.log("Alas! You lost the game.");
+
+    } else {
+        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
+        console.log("You gotta be kidding! I am not debugging this. I am too lazy for that. Do it yourself!");
+    }
+
 }
 
-playGame()
+
+playGame();
