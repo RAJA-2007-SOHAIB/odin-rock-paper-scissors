@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons button {
+    border-radius: 20px;
+    padding: 1vw 3vw;
+    background-color: #2563eb;
+    font-size: 18px;
+    font-weight: 400;
+    color: #f5f5f5;
+    border: none;
+}
+
+.buttons {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    gap: 3vw;
+}
+
+.buttons button:hover{
+    background-color: black;
+}
+

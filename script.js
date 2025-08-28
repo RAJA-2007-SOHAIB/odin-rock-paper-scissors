@@ -4,76 +4,26 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getHumanChoice() {
-    const choice = prompt("Select your choice(rock, paper, scissors): ");
-    return choice;
+
+function displayChoices() {
+    const human = document.querySelector(".human");
+    human.textContent = `You chose: ${event.target.classList[0]}`;
+    const computer = document.querySelector(".computer");
+    computer.textContent = `Computer chose: ${getComputerChoice()}`;
 }
 
 
-let humanScore = 0;
-let computerScore = 0;
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", (event) => {
+    displayChoices();
+})
 
-function showChoices(yourChoice, computerChoice) {
-    return `You chose: ${yourChoice.toLowerCase()}\nComputer chose: ${computerChoice}`;
-}
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", (event) => {
+    displayChoices();
+})
 
-
-function playRound(yourChoice, computerChoice) {
-    let result;
-    yourChoice = yourChoice.toLowerCase();
-
-    if (yourChoice === computerChoice) {
-        result = "It's a tie!";
-        
-    } else if (yourChoice !== computerChoice) {
-        if ( (yourChoice === "rock" && computerChoice === "scissors") 
-        || (yourChoice === "paper" && computerChoice === "rock")
-        || (yourChoice === "scissors" && computerChoice === "paper")) {
-            result = "You won!";
-            humanScore += 1;
-        } else if ((yourChoice === "rock" && computerChoice === "paper")
-        || (yourChoice === "paper" && computerChoice === "scissors")
-        || (yourChoice === "scissors" && computerChoice === "rock")) {
-            result = "You lost!";
-            computerScore += 1;
-        }else {
-            result = `Are you FR!!! Select "ONLY" from the given options!`
-        }
-    }
-
-    return showChoices(yourChoice, computerChoice) + "\n" + result + "\n" + humanScore + "\t" + computerScore;
-
-}
-
-function playGame() {
-    let nextRound = prompt("press any key to start round 1");
-    console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-    nextRound = prompt("press any key to start round 2");
-    console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-    nextRound = prompt("press any key to start round 3");
-    console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-    nextRound = prompt("press any key to start round 4");
-    console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-    nextRound = prompt("press any key to start round 5");
-    console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-    if (humanScore > computerScore) {
-        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
-        console.log(`Congrats! You have won the game.`);
-    } else if(humanScore < computerScore) {
-        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
-        console.log("Alas! You lost the game.");
-
-    } else {
-        console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
-        console.log("You gotta be kidding! I am not debugging this. I am too lazy for that. Do it yourself!");
-    }
-
-}
-
-
-playGame();
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener("click", (event) => {
+    displayChoices();
+})
